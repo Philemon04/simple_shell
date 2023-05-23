@@ -1,4 +1,4 @@
-#include "simpleshell.h"
+#include "header.h"
 
 /**
  * _putchar - writhes the character to stdout
