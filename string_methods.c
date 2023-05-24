@@ -74,7 +74,7 @@ char *str_concat(char *string1, char *string2)
 		return (NULL);
 	}
 
-	for (i = 0; (string1 + i) != '\0'; i++)
+	for (i = 0; *(string1 + i) != '\0'; i++)
 		*(destination + i) = *(string1 + i);
 
 	for (k = 0; *(string2 + k)  != '\0'; k++)
