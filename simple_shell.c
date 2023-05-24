@@ -3,9 +3,9 @@
 #include <sys/types.h>
 
 /**
- * prompt - method prints '$' and gets ready for input
+ * start_prompt - method prints '$' and gets ready for input
+ * Return: void
  */
-
 void start_prompt(void)
 {
 	char *prompt = {"#myShell$ "};
@@ -22,7 +22,6 @@ void start_prompt(void)
  * read_command - reads the input and converts it to stdin
  * Return: void
  */
-
 char *read_command(void)
 {
 	char *entry = NULL;
@@ -50,7 +49,8 @@ char *read_command(void)
 	}
 	else
 	{
-		for (j = 0; entry[j] == ' ' && entry[j + 1] == ' '; j++);
+		for (j = 0; entry[j] == ' ' && entry[j + 1] == ' '; j++)
+			;
 		if (!entry[j] && entry[j + 1] == '\n')
 			{
 				free(entry);
@@ -101,7 +101,6 @@ char **get_array_from_str(char *str, char **env)
 	}
 	if ((_strcmp(entry[0], "env") == 0) && entry[1] == NULL)
 		print_shell(env);
-	
 	return (entry);
 }
 
@@ -129,7 +128,7 @@ char **_which(char *foundpath)
 		return (NULL);
 	}
 
-	copy_path = _stdrup(foundpath);
+	copy_path = _strdup(foundpath);
 	entry = strtok(copy_path, separator);
 	while (entry != NULL)
 	{
@@ -150,7 +149,6 @@ char **_which(char *foundpath)
  * @count: count of the entry
  * Return: 1
  */
-
 int executable_command(char **av, char **args, char **env, int status_main, int count)
 {
 	pid_t pid;
