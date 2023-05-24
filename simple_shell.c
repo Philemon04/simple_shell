@@ -50,7 +50,7 @@ char *read_command(void)
 	}
 	else
 	{
-		for (j = 0; entry[j] == ' ' && line[j + 1] == ' '; j++);
+		for (j = 0; entry[j] == ' ' && entry[j + 1] == ' '; j++);
 		if (!entry[j] && entry[j + 1] == '\n')
 			{
 				free(entry);
@@ -81,7 +81,7 @@ char **get_array_from_str(char *str, char **env)
 	if (!entry)
 	{
 		perror("Error");
-		exit(EXIT_FAILURE):
+		exit(EXIT_FAILURE);
 	}
 	entry1 = strtok(str, token_Delim);
 	while (entry1 != NULL)
