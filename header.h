@@ -17,7 +17,7 @@ int executable_command(char **argv, char **args, char **environ, int string, int
 int _strlen(const char *len);
 int _strcmp(char *string1, char *string2);
 char *_strstr(char *string1, char *substring);
-char *_stdrup(char *string);
+char *_strdup(char *string);
 char *_strcat(char *destintn, char *sourc);
 char *_strcpy(char *destintn, char *sourc);
 char *_itoa(int integer, int base);
