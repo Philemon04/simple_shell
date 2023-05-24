@@ -30,7 +30,7 @@ int main(int ac __attribute__((unused)), char **av, char ** env)
 				count += 1;
 				path = search_path(env);
 				status = _stat(args, path);
-				child_process(av, args, env, status, count);
+				executable_command(av, args, env, status, count);
 		}
 		else
 		{
