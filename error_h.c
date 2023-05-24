@@ -1,6 +1,7 @@
 #include "header.h"
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 
 /**
  * get_input - ends the prompt with a new line and handles CTRL + C
