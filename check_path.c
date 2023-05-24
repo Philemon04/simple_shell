@@ -7,9 +7,9 @@
 
 char **search_path(char **environ)
  {
-	 int position = 0;
+	 int p;
 	 char **entry_path;
-	 for (int p = 0; environ[p] != NULL; p++)
+	 for (p = 0; environ[p] != NULL; p++)
 	 {
 		 if (environ[p][0] == 'P' && environ[p][2] == 'T')
 		 {
@@ -25,7 +25,7 @@ char **search_path(char **environ)
  * Return: the pointer of the concat string
  */
 
-char *_strdup(char string)
+char *_strdup(char *string)
 {
 	int j;
 	int k;
@@ -35,13 +35,13 @@ char *_strdup(char string)
 		return (0);
 	for (j = 0, string[j]; j++)
 		;
-	i++;
-	size  = malloc(j * sizeof(char *));
-	if (!size)
+	j++;
+	s = malloc(j * sizeof(char *));
+	if (!s)
 		return (NULL);
 	for (k = 0; k < j; k++)
 	{
-		size[k] = string[k];
+		s[k] = string[k];
 	}
 	return (s);
 }
