@@ -1,14 +1,20 @@
 Hello
 
-Write a UNIX command line interpreter.
+This is a simple unix command line interface that is built using C and compiled with GCC.
 
-Usage: simple_shell
-Your Shell should:
+It utilizes various functions to handle the various necesseties of a command line.
+A later update to thsi file will list what each function does.
 
-Display a prompt and wait for the user to type a command. A command line always ends with a new line.
-The prompt is displayed again each time a command has been executed.
-The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
-The command lines are made only of one word. No arguments will be passed to programs.
-If an executable cannot be found, print an error message and display the prompt again.
-Handle errors.
-You have to handle the “end of file” condition (Ctrl+D)
+check_path.c  -  Functions that handle path commands
+
+error_h.c  -  Handles input and catches errors
+
+header.h  -  is the main header file of the project
+
+shell  -  the executable file generated. this is the CLI
+
+shell_main.c  -  contains the main method and other methods that deal with the prompt
+
+simple_shell.c  -  various methods and functions
+
+string_methods.c  -  functions that implement C string functions
