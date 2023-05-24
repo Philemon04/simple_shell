@@ -8,7 +8,7 @@
  * @env: environment variable
  * Return: EXIT_SUCCESS
  */
-int main(int ac __attribute__((unused)), char **av, char ** env)
+int main(int ac __attribute__((unused)), char **av, char **env)
 {
 	char *entry;
 	char **args;
@@ -25,7 +25,7 @@ int main(int ac __attribute__((unused)), char **av, char ** env)
 
 		args = get_array_from_str(entry, env);
 
-		if((_strcmp(args[0], "\n") != 0) && (_strcmp(args[0], "env") != 0))
+		if ((_strcmp(args[0], "\n") != 0) && (_strcmp(args[0], "env") != 0))
 		{
 				count += 1;
 				path = search_path(env);
