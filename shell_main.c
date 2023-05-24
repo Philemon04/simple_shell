@@ -52,3 +52,28 @@ void print_shell(char **env)
 	for (j = 0; env[j]; j++)
 			_puts(env[j]);
 }
+
+/**
+ * _calloc - allocates memory for numb elements of size bytes
+ * @numb: number of elements in the array
+ * @size: bytes for the positions in the array
+ * Return: void
+ */
+void *_calloc(unsigned int numb, unsigned int size)
+{
+	char *pointer;
+	unsigned int j;
+
+	if (numb == 0 || size == 0)
+		return (NULL);
+
+	pointer = malloc(numb * size);
+	if (pointer == NULL)
+		return (NULL);
+
+	for (j = 0; j < numb * size; j++)
+		pointer[j] = 0;
+
+	return (pointer);
+
+}
