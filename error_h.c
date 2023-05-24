@@ -7,7 +7,7 @@
  * get_input - ends the prompt with a new line and handles CTRL + C
  * @input: the input passed
  *
- */ 
+ */
 void get_input(int input)
 {
 	char *prompt = {"\n#myShell$ "};
@@ -26,7 +26,7 @@ void get_input(int input)
 int _stat(char **cmd, char **path)
 {
 	char *concat_str = NULL;
-        char *new_str = NULL;
+	char *new_str = NULL;
 	int count;
 
 	struct stat sb;
@@ -70,7 +70,6 @@ int *_error(char *argv, int count, char *args)
 	char *num;
 
 	num = _itoa(count, 10);
-	
 	write(2, argv, _strlen(argv));
 	write(2, ": ", 2);
 	write(2, num, _strlen(num));

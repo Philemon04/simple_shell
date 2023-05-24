@@ -3,14 +3,13 @@
 /**
  * search_path - searches for the PATH to execute commands
  * @environ: Environment variable
- * Return: the path
+ * Return: The path
  */
 
 char **search_path(char **environ)
 {
 	int p;
 	char **entry_path;
-	
 	for (p = 0; environ[p] != NULL; p++)
 	{
 		if (environ[p][0] == 'P' && environ[p][2] == 'T')
@@ -22,12 +21,11 @@ char **search_path(char **environ)
 }
 
 /**
- * _stdrup - concats strings
- * @string: the string
+ * _strdup - duplicates a strings
+ * @string: The string to be duplicated
  * Return: the pointer of the concat string
  */
-
-char *_stdrup(char *string)
+char *_strdup(char *string)
 {
 	int j;
 	int k;
@@ -35,12 +33,12 @@ char *_stdrup(char *string)
 
 	if (string == NULL)
 		return (0);
-	
-	for (j = 0; string[j]; j++);
+	j = 0;
+	while (string[j])
+		j++;
 
-	j++;
-	s = malloc(j * sizeof(char *));
-	if (!s)
+	s = malloc((j + 1) * sizeof(char));
+	if (s == NULL)
 		return (NULL);
 
 	for (k = 0; k < j; k++)
@@ -65,7 +63,6 @@ char *_itoa(int integer, int base)
 	char sign = 0;
 	char *ptr;
 	unsigned long n = integer;
-	
 	if (integer < 0)
 	{
 		n = -integer;
@@ -81,5 +78,6 @@ char *_itoa(int integer, int base)
 
 	if (sign)
 		*--ptr = sign;
+
 	return (ptr);
 }
