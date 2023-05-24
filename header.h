@@ -37,5 +37,6 @@ int execute(char **args, char **argv, int count, char *str, char **env);
 int _access(char *filename);
 
 int *_error(char *argv, int count, char *argc);
+char **_which(char *foundpath);
 
 #endif
