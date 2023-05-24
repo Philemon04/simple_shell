@@ -10,7 +10,7 @@
  */ 
 void get_input(int input)
 {
-	char *prompt = {"\ncisfun"};
+	char *prompt = {"\n#myShell$ "};
 	(void) input;
 
 	write(STDOUT_FILENO, prompt, _strlen(prompt));
