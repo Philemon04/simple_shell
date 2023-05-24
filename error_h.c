@@ -24,7 +24,8 @@ void get_input(int input)
  */
 int _stat(char **cmd, char **path)
 {
-	char *concat_str = NULL, *new_str = NULL;
+	char *concat_str = NULL;
+        char *new_str = NULL;
 	int count;
 
 	struct stat sb;
