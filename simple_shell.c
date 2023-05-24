@@ -6,7 +6,7 @@
  * prompt - method prints '$' and gets ready for input
  */
 
-void prompt(void)
+void start_prompt(void)
 {
 	char *prompt = {"cisfun"};
 	char *buffer = getcwd(NULL, 0);
