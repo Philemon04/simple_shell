@@ -8,7 +8,7 @@
 
 void start_prompt(void)
 {
-	char *prompt = {"cisfun"};
+	char *prompt = {"#myShell$ "};
 	char *buffer = getcwd(NULL, 0);
 
 	if (isatty(STDIN_FILENO))
