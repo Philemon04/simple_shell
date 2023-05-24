@@ -28,10 +28,10 @@ char *read_command(void)
 	char *entry = NULL;
 	ssize_t signal;
 	size_t bufsize = 0;
-	int i;
+	int j;
 
 	signal = getline(&entry, &bufsize, stdin);
-	if (!line)
+	if (!entry)
 	{
 		perror("Error when allocating memory for buffer");
 		return (0);
@@ -50,7 +50,7 @@ char *read_command(void)
 	}
 	else
 	{
-		for (i = 0; entry[j] == ' ' && line[j + 1] == ' '; j++);
+		for (j = 0; entry[j] == ' ' && line[j + 1] == ' '; j++);
 		if (!entry[j] && entry[j + 1] == '\n')
 			{
 				free(entry);
@@ -71,7 +71,7 @@ char **get_array_from_str(char *str, char **env)
 {
 	int buffersize = token_Bufsize, position = 0;
 	char **entry;
-	char *entry;
+	char *entry1;
 
 	if (str == NULL)
 	{
@@ -83,7 +83,7 @@ char **get_array_from_str(char *str, char **env)
 		perror("Error");
 		exit(EXIT_FAILURE):
 	}
-	entry1 = strtok(line, token_Delim);
+	entry1 = strtok(str, token_Delim);
 	while (entry1 != NULL)
 	{
 		entry[position] = entry1;
@@ -129,7 +129,7 @@ char **_which(char *foundpath)
 		return (NULL);
 	}
 
-	copy_path = _strdup(foundpath);
+	copy_path = _stdrup(foundpath);
 	entry = strtok(copy_path, separator);
 	while (entry != NULL)
 	{
