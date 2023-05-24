@@ -40,7 +40,7 @@ int _stat(char **cmd, char **path)
 	{
 		concat_str = str_concat(path[count], "/");
 		new_str = str_concat(concat_str, cmd[0]);
-		if (stat(new_str) &sb) == 0 && (sb.st_mode & S_IXUSR))
+		if (stat(new_str, &sb) == 0 && (sb.st_mode & S_IXUSR))
 		{
 			cmd[0] = new_str;
 			free(concat_str);
@@ -71,7 +71,7 @@ int *_error(char *argv, int count, char *args)
 	
 	write(2, argv, _strlen(argv));
 	write(2, ": ", 2);
-	write(2, number, _strlen(number));
+	write(2, num, _strlen(num));
 	write(2, ": ", 2);
 	write(2, args, _strlen(args));
 	perror(" ");
