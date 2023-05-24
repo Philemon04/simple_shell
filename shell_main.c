@@ -7,7 +7,7 @@
  * @env: environment variable
  * Return: EXIT_SUCCESS
  */
-int main(int ac _attribute_((unused)), char **av, char ** env)
+int main(int ac __attribute__((unused)), char **av, char ** env)
 {
 	char *entry;
 	char **args;
@@ -48,6 +48,6 @@ void print_shell(char **env)
 {
 	int j;
 
-	for (j = 0; env[j]; j++
+	for (j = 0; env[j]; j++)
 			_puts(env[j]);
 }
