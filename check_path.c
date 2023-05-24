@@ -25,7 +25,7 @@ char **search_path(char **environ)
  * Return: the pointer of the concat string
  */
 
-char *_strdup(char *string)
+char *_stdrup(char *string)
 {
 	int j;
 	int k;
