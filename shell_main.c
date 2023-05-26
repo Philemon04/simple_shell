@@ -111,7 +111,7 @@ char *_strcat(char *destination, char *org)
 	{
 		*pointer = *org;
 		pointer++;
-		org++:
+		org++;
 	}
 
 	*pointer = '\0';
