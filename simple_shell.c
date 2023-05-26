@@ -23,7 +23,19 @@ char *read_command(void)
 	char *entry = NULL;
 	ssize_t signal = 0;
 
-	getline(&entry, &signal, stdin);
+	if (getline(&entry, &signal, stdin))
+	{
+		if (feof(stdin))
+		{
+			_puts("\n");
+			exit(EXIT_SUCCESS);
+		}
+		else
+		{
+			perror("Error");
+			exit(EXIT_FAILURE);
+		}
+	}
 
 	return (entry);
 }
@@ -35,7 +47,7 @@ char *read_command(void)
  * Return: returns array of strings or exits
  */
 
-char **get_array_from_str(char *str, char **env)
+char **get_array_from_str(char *str, char **env __attribute__ ((unused)))
 {
 	int i = 0, position = 0;
 	char **entry;
@@ -44,7 +56,7 @@ char **get_array_from_str(char *str, char **env)
 	entry = _calloc(1024, sizeof(char *));
 	if (entry == NULL)
 	{
-		peror("Error");
+		perror("Error");
 		return (NULL);
 	}
 	entry1 = strtok(str, " \n");
@@ -60,7 +72,7 @@ char **get_array_from_str(char *str, char **env)
 			free(entry[i]);
 			entry[i] = _itoa(status);
 		}
-		else if (_strcmp(token, "$$") == 0)
+		else if (_strcmp(entry1, "$$") == 0)
 		{
 			free(entry[i]);
 			entry[i] = _itoa(getpid());
@@ -106,7 +118,7 @@ char **_which(char *foundpath)
 		copy_path = strtok(NULL, ":");
 	}
 
-	dir[j] = NULL:
+	dir[j] = NULL;
 
 	return (dir);
 }
@@ -120,7 +132,7 @@ char **_which(char *foundpath)
  * @count: count of the entry
  * Return: 1
  */
-int executable_command(char **av, char **args, char **env, int status_main, int count)
+void executable_command(char **av, char **args, char **env, int status_main, int count)
 {
 	pid_t pid;
 	int status;
@@ -144,6 +156,6 @@ int executable_command(char **av, char **args, char **env, int status_main, int 
 	{
 		waitpid(pid, &status, 0);
 		if (WIFEXITED(status))
-			status = WEXITSTATUS(status);
+			status_main = WEXITSTATUS(status);
 	}
 }
