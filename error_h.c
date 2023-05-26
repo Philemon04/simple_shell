@@ -45,7 +45,7 @@ int _stat(char **cmd, char **path)
 				return (0);
 			}
 
-			concat_str = _strcat(_strcpy(concat_str, path[count]), slash);
+			concat_str = _strcat(_strcpy(concat_str, path[count]), divider);
 			concat_str = _strcat(concat_str, cmd[0]);
 
 			if (stat(concat_str, &sb) == 0)
@@ -63,24 +63,3 @@ int _stat(char **cmd, char **path)
 	return (0);
 }
 
-/**
- * _error - stdout error of file
- * @argv: name of the program
- * @count: number of prompt
- * @args: commands to be passed
- * Return: 0
- */
-int *_error(char *argv, int count, char *args)
-{
-	char *num;
-
-	num = _itoa(count, 10);
-	write(2, argv, _strlen(argv));
-	write(2, ": ", 2);
-	write(2, num, _strlen(num));
-	write(2, ": ", 2);
-	write(2, args, _strlen(args));
-	perror(" ");
-
-	return (0);
-}
