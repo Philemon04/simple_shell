@@ -82,5 +82,39 @@ void *_calloc(unsigned int numb, unsigned int size)
 	}
 
 	return (pointer);
+}
 
+/**
+ * _malloc - it does something
+ * @size -  size to be checked
+ * Return: void
+ */
+void *_malloc(size_t size)
+{
+	return malloc(size);
+}
+
+/**
+ * strcat - copy source string to destination
+ * @destination - destination
+ * @org - origin
+ * Return: destination
+ */
+char *_strcat(char *destination, char *org)
+{
+	char *pointer = destination;
+
+	while (*pointer)
+		pointer++;
+
+	while (*org)
+	{
+		*pointer = *org;
+		pointer++;
+		org++:
+	}
+
+	*pointer = '\0';
+
+	return destination;
 }
