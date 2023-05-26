@@ -6,13 +6,14 @@
 #include <string.h>
 #include <dirent.h>
 #include <fcntl.h>
+#include <stddef.>
 #define token_Bufsize 1024
 extern char **environ;
 
 void get_input(int input);
 int exit_shell(char **args);
 void print_shell(char **env);
-int executable_command(char **argv, char **args, char **environ, int string, int counts);
+void executable_command(char **argv, char **args, char **environ, int string, int counts);
 int _strlen(const char *len);
 int _strcmp(char *string1, char *string2);
 char *_strstr(char *string1, char *substring);
@@ -34,6 +35,7 @@ int _putchar(char c);
 
 int execute(char **args, char **argv, int count, char *str, char **env);
 int _access(char *filename);
+void *_malloc(size_t size);
 
 int *_error(char *argv, int count, char *argc);
 char **_which(char *foundpath);
