@@ -17,15 +17,15 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	int status = 0;
 	(void) av;
 	signal(SIGINT, get_input);
+
 	while (1)
 	{
 		start_prompt();
-
 		entry = read_command();
-
 		args = get_array_from_str(entry, env);
 
-		if ((_strcmp(args[0], "\n") != 0) && (_strcmp(args[0], "env") != 0))
+		if (args && args[0] && (_strcmp(args[0], "\n")  != 0) &&
+				(_strcmp(args[0], "env") != 0))
 		{
 				count += 1;
 				path = search_path(env);
@@ -50,7 +50,9 @@ void print_shell(char **env)
 	int j;
 
 	for (j = 0; env[j]; j++)
-			_puts(env[j]);
+	{
+		_puts(env[j]);
+	}
 }
 
 /**
@@ -61,18 +63,22 @@ void print_shell(char **env)
  */
 void *_calloc(unsigned int numb, unsigned int size)
 {
-	char *pointer;
-	unsigned int j;
+	void *pointer;
+	unsigned int j = numb * size;
+	unsigned int k;
 
 	if (numb == 0 || size == 0)
 		return (NULL);
 
-	pointer = malloc(numb * size);
+	pointer = malloc(j);
 	if (pointer == NULL)
 		return (NULL);
+	char *pointer2 = (char *)pointer;
 
-	for (j = 0; j < numb * size; j++)
-		pointer[j] = 0;
+	for (k = 0; k < j; k++)
+	{
+		pointer2[k] = 0;
+	}
 
 	return (pointer);
 
