@@ -10,13 +10,16 @@ char **search_path(char **environ)
 {
 	int p;
 	char **entry_path;
+
 	for (p = 0; environ[p] != NULL; p++)
 	{
-		if (environ[p][0] == 'P' && environ[p][2] == 'T')
+		if (strncmp(environ[p], "PATH=", 5) == 0)
 		{
-			entry_path = _which(environ[p]);
+			entry_path = _which(environ[p] + 5);
+			break;
 		}
 	}
+
 	return (entry_path);
 }
 
@@ -27,24 +30,22 @@ char **search_path(char **environ)
  */
 char *_strdup(char *string)
 {
-	int j;
-	int k;
-	char *s = NULL;
+	int j, k;
+	char *s;
 
 	if (string == NULL)
-		return (0);
-	j = 0;
-	while (string[j])
-		j++;
+		return (NULL);
 
+	j = _strlen(str);
 	s = malloc((j + 1) * sizeof(char));
 	if (s == NULL)
 		return (NULL);
 
 	for (k = 0; k < j; k++)
-	{
 		s[k] = string[k];
-	}
+
+	s[j] = '\0';
+
 	return (s);
 }
 
@@ -56,28 +57,42 @@ char *_strdup(char *string)
  * Reference: https://gist.github.com/narnat/95733cd0ad7bfac0d90697292914c407
  */
 
-char *_itoa(int integer, int base)
+char *_itoa(int integer)
 {
-	static char *array = "0123456789abcdef";
-	static char buffer[50];
-	char sign = 0;
+	int counter = 0;
+	int placeh = integer;
 	char *ptr;
-	unsigned long n = integer;
-	if (integer < 0)
+
+	if (integer == 0)
 	{
-		n = -integer;
-		sign = '-';
+		ptr = malloc(2 * sizeof(char));
+		if (ptr == NULL)
+			return (NULL);
+
+		ptr[0] = '0';
+		ptr[1] = '\0';
+
+		return (ptr);
 	}
-	ptr = &buffer[49];
-	*ptr = '\0';
 
-	do {
-		*--ptr = array[n % base];
-		n /= base;
-	} while (n != 0);
+	while (placeh != 0)
+	{
+		counter++;
+		placeg /= 10;
+	}
 
-	if (sign)
-		*--ptr = sign;
+	ptr = malloc((count + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+
+	ptr[counter] = '\0';
+
+	while (integer != 0)
+	{
+		counter--;
+		ptr[count] = (num % 10) + '0';
+		num /= 10;
+	}
 
 	return (ptr);
 }
