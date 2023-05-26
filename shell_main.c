@@ -66,6 +66,7 @@ void *_calloc(unsigned int numb, unsigned int size)
 	void *pointer;
 	unsigned int j = numb * size;
 	unsigned int k;
+	char *pointer2;
 
 	if (numb == 0 || size == 0)
 		return (NULL);
@@ -73,7 +74,7 @@ void *_calloc(unsigned int numb, unsigned int size)
 	pointer = malloc(j);
 	if (pointer == NULL)
 		return (NULL);
-	char *pointer2 = (char *)pointer;
+	pointer2 = (char *)pointer;
 
 	for (k = 0; k < j; k++)
 	{
