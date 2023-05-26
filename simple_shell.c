@@ -21,7 +21,7 @@ void start_prompt(void)
 char *read_command(void)
 {
 	char *entry = NULL;
-	ssize_t signal = 0;
+	size_t signal = 0;
 
 	if (getline(&entry, &signal, stdin))
 	{
@@ -66,11 +66,6 @@ char **get_array_from_str(char *str, char **env __attribute__ ((unused)))
 		{
 			free(entry[i - 1]);
 			entry[i - 1] = _strdup("env");
-		}
-		else if (_strcmp(entry1, "$?") == 0)
-		{
-			free(entry[i]);
-			entry[i] = _itoa(status);
 		}
 		else if (_strcmp(entry1, "$$") == 0)
 		{
@@ -154,8 +149,8 @@ void executable_command(char **av, char **args, char **env, int status_main, int
 	}
 	else
 	{
-		waitpid(pid, &status, 0);
-		if (WIFEXITED(status))
+		waitpid(pid, &status, count);
+		if (WIFEXITED(status_main))
 			status_main = WEXITSTATUS(status);
 	}
 }
