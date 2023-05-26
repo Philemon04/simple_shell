@@ -36,7 +36,7 @@ char *_strdup(char *string)
 	if (string == NULL)
 		return (NULL);
 
-	j = _strlen(str);
+	j = _strlen(string);
 	s = malloc((j + 1) * sizeof(char));
 	if (s == NULL)
 		return (NULL);
@@ -78,11 +78,11 @@ char *_itoa(int integer)
 	while (placeh != 0)
 	{
 		counter++;
-		placeg /= 10;
+		placeh /= 10;
 	}
 
 	ptr = malloc((count + 1) * sizeof(char));
-	if (str == NULL)
+	if (ptr == NULL)
 		return (NULL);
 
 	ptr[counter] = '\0';
@@ -90,8 +90,8 @@ char *_itoa(int integer)
 	while (integer != 0)
 	{
 		counter--;
-		ptr[count] = (num % 10) + '0';
-		num /= 10;
+		ptr[count] = (integer % 10) + '0';
+		integer /= 10;
 	}
 
 	return (ptr);
