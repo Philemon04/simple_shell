@@ -8,13 +8,9 @@
  * @input: the input passed
  *
  */
-void get_input(int input)
+void get_input(int input __attribute__((unused)))
 {
-	char *prompt = {"\n#myShell$ "};
-	(void) input;
-
-	write(STDOUT_FILENO, prompt, _strlen(prompt));
-	fflush(stdout);
+	write(STDOUT_FILENO, "\n#myshell$ ", 11);
 }
 
 /**
@@ -25,36 +21,45 @@ void get_input(int input)
  */
 int _stat(char **cmd, char **path)
 {
-	char *concat_str = NULL;
-	char *new_str = NULL;
+	char *concat_str;
+	char *divider = "/";
 	int count;
 
 	struct stat sb;
 
-	if (path == NULL)
+	if (cmd[0][0] == '/' || cmd[0][0] == '.')
 	{
-		free(path);
-		free(cmd);
-		return (0);
+		if (stat(cmd[0], &sb) == 0)
+			return (1);
+	}
+	else
+	{
+		for (count = 0; path[count] != NULL; count++)
+		{
+			concat_str = malloc((strlen(path[count]) +
+						strlen(cmd[0]) + 2) * sizeof(char));
+			if (concat_str == NULL)
+			{
+				perror("Error");
+
+				return (0);
+			}
+
+			concat_str = _strcat(_strcpy(concat_str, path[count]), slash);
+			concat_str = _strcat(concat_str, cmd[0]);
+
+			if (stat(concat_str, &sb) == 0)
+			{
+				free(cmd[0]);
+				cmd[0] = _strdup(concat_str);
+				free(concat_str);
+				return (1);
+			}
+
+			free(concat_str);
+		}
 	}
 
-	for (count = 0; path[count] != NULL; count++)
-	{
-		concat_str = str_concat(path[count], "/");
-		new_str = str_concat(concat_str, cmd[0]);
-		if (stat(new_str, &sb) == 0 && (sb.st_mode & S_IXUSR))
-		{
-			cmd[0] = new_str;
-			free(concat_str);
-			free(path[0]);
-			free(path);
-			return (1);
-		}
-		free(concat_str);
-		free(new_str);
-	}
-	free(path[0]);
-	free(path);
 	return (0);
 }
 
