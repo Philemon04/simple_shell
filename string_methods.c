@@ -36,9 +36,8 @@ void _puts(char *str)
 
 int _strlen(const char *s)
 {
-	int i;
+	int i = 0;
 
-	i = 0;
 	while (s[i] != '\0')
 	{
 		i++;
@@ -90,8 +89,7 @@ char *str_concat(char *string1, char *string2)
  * _strcmp - compare a set of strings
  * @string1: first string
  * @string2: second string
- * Return: returns the number that is comparative to whether the strings are null and
- * how the two strings compare
+ * Return: returns the number
  */
 int _strcmp(char *string1, char *string2)
 {
