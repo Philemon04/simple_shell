@@ -63,3 +63,27 @@ int _stat(char **cmd, char **path)
 	return (0);
 }
 
+/**
+ * strcpy - copy source string to destination
+ * @destination - destination
+ * @org - origin
+ * Return: destination
+ **/
+char *_strcpy(char *destination, char *org)
+{
+	char *pointer = destination;
+       
+	while (*pointer)
+		pointer++;
+	
+	while (*org)
+	{
+		*pointer = *org;
+		pointer++;
+		org++:
+	}
+	
+	pointer = '\0';
+	
+	return destination;
+}
