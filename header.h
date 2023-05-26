@@ -6,8 +6,7 @@
 #include <string.h>
 #include <dirent.h>
 #include <fcntl.h>
-#define token_Bufsize 64
-#define token_Delim " \t\r\n\a"
+#define token_Bufsize 1024
 extern char **environ;
 
 void get_input(int input);
@@ -20,7 +19,7 @@ char *_strstr(char *string1, char *substring);
 char *_strdup(char *string);
 char *_strcat(char *destintn, char *sourc);
 char *_strcpy(char *destintn, char *sourc);
-char *_itoa(int integer, int base);
+char *_itoa(int integer);
 char *read_command(void);
 char **get_array_from_str(char *str, char **env);
 void start_prompt(void);
