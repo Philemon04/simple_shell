@@ -81,7 +81,7 @@ char *_itoa(int integer)
 		placeh /= 10;
 	}
 
-	ptr = malloc((count + 1) * sizeof(char));
+	ptr = malloc((counter + 1) * sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
 
@@ -90,7 +90,7 @@ char *_itoa(int integer)
 	while (integer != 0)
 	{
 		counter--;
-		ptr[count] = (integer % 10) + '0';
+		ptr[counter] = (integer % 10) + '0';
 		integer /= 10;
 	}
 
