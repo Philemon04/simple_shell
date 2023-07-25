@@ -1,13 +1,15 @@
-#ifndef _HEADER_H_
+fndef _HEADER_H_
 #define _HEADER_H_
+#include <sys/wait.h>
+#include <sys/stat.h>
 #include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
 #include <dirent.h>
+#include <string.h>
 #include <fcntl.h>
-#include <stddef.h>
-#define token_Bufsize 1024
+#define TOK_BUFFERSIZE 64
+#define TOK_DELIM " \t\r\n\a"
 extern char **environ;
 
 void get_input(int input);
