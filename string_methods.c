@@ -1,10 +1,10 @@
 #include "header.h"
 
 /**
- * _putchar - writhes the character to stdout
- * @c: the character passed
- * Return: returns 1 or -1 on failure
- */
+* _putchar - writhes the character to stdout
+* @c: the character passed
+* Return: returns 1 or -1 on failure
+*/
 
 int _putchar(char c)
 {
@@ -12,90 +12,94 @@ int _putchar(char c)
 }
 
 /**
- * _puts - prints a string
- * @str: the pointer to the string
- * Return: void
- */
+* _puts - prints a string
+* @line: the pointer to the string
+* Return: void
+*/
 
-void _puts(char *str)
+void _puts(char *line)
 {
-	int g;
+	int j;
 
-	for (g = 0; str[g] != '\0'; g++)
+	for (j = 0 ; line[j] != '\0' ; j++)
 	{
-		_putchar(str[g]);
+		_putchar(line[j]);
 	}
 	_putchar('\n');
 }
 
 /**
- * _strlen - checks the length of string
- * @s: length checker
- * Return: the length
- */
+* _strlen - checks the length of string
+* @s: length checker
+* Return: the length
+*/
 
 int _strlen(const char *s)
 {
-	int i = 0;
+	int j;
 
-	while (s[i] != '\0')
+	j = 0;
+	while (s[j] != '\0')
 	{
-		i++;
+		j++;
 	}
-	return ((i + 1));
+	return ((j + 1));
 }
 
 /**
- * str_concat - back a pointer to array
- * @string1: first array
- * @string2: second array
- * Return: returns an array
- */
-char *str_concat(char *string1, char *string2)
+* str_concat - back a pointer to array
+* @string1: first array
+* @string2: second array
+* Return: returns an array
+*/
+char *str_concat(char *str1, char *str2)
 {
-	char *destination;
-	unsigned int i;
-	unsigned int k;
-	unsigned int size;
+	char *end;
+	unsigned int i, j, size;
 
-	if (string1 == NULL)
-		string1 = "";
+	/*If the array is empty*/
+	if (str1 == NULL)
+		str1 = "";
 
-	if (string2 == NULL)
-		string2 = "";
+	if (str2 == NULL)
+		str2 = "";
 
-	size = (_strlen(string1) + _strlen(string2) + 1);
+	/*count size total*/
+	size = (_strlen(str1) + _strlen(str2) + 1);
 
-	destination = (char *) malloc(size * sizeof(char));
+	/*malloc*/
+	end = (char *) malloc(size * sizeof(char));
 
-	if (destination == 0)
+	if (end == 0)
 	{
 		return (NULL);
 	}
 
-	for (i = 0; *(string1 + i) != '\0'; i++)
-		*(destination + i) = *(string1 + i);
+	/*Concatenate arrays*/
+	for (i = 0; *(str1 + i) != '\0'; i++)
+		*(end + i) = *(str1 + i);
 
-	for (k = 0; *(string2 + k)  != '\0'; k++)
+	for (j = 0; *(str2 + j) != '\0'; j++)
 	{
-		*(destination + i) = *(string2 + k);
+		*(end + i) = *(str2 + j);
 		i++;
 	}
-	destination[i] = '\0';
-	return (destination);
+	end[i] = '\0';
+
+	return (end);
 }
 
 /**
- * _strcmp - compare a set of strings
- * @string1: first string
- * @string2: second string
- * Return: returns the number
- */
+* _strcmp - compare a set of strings
+* @string1: first string
+* @string2: second string
+* Return: returns the number
+*/
 int _strcmp(char *string1, char *string2)
 {
 	char *pointer1 = string1;
 	char *pointer2 = string2;
-
+	
 	while (*pointer1 != '\0' && *pointer2 != '\0' && *pointer1 == *pointer2)
 	{
 		pointer1++;
@@ -103,5 +107,3 @@ int _strcmp(char *string1, char *string2)
 	}
 	return (*pointer1 - *pointer2);
 }
-
-
