@@ -4,92 +4,78 @@
  * search_path - searches for the PATH to execute commands
  * @environ: Environment variable
  * Return: The path
- */
+ **/
 
 char **search_path(char **environ)
 {
-	int p;
-	char **entry_path;
-
-	for (p = 0; environ[p] != NULL; p++)
+	int place = 0;
+	char **path_of_token;
+	
+	for (; environ[place] != NULL ; place++)
 	{
-		if (strncmp(environ[p], "PATH=", 5) == 0)
+		if (environ[place][0] == 'P' && environ[place][2] == 'T')
 		{
-			entry_path = _which(environ[p] + 5);
-			break;
+			path_of_token = _which(environ[place]);
 		}
 	}
+	return (path_of_token);
+}
 
-	return (entry_path);
+/**
+ *  _itoa - integer to ascii value
+ *  @temp_num: the integer
+ *  @base: the base
+ *  Return: char
+ *  Reference: https://gist.github.com/narnat/95733cd0ad7bfac0d90697292914c407
+ */
+
+char *_itoa(int temp_num, int base)
+{
+	static char *holder = "0123456789abcdef";
+	static char buff[50];
+	char init_sign = 0;
+	char *pointer;
+	unsigned long l = temp_num;
+
+	if (temp_num < 0)
+	{
+		l = -temp_num;
+		init_sign = '-';
+	}
+	pointer = &buff[49];
+	*pointer = '\0';
+	
+	do      {
+		*--pointer = holder[l % base];
+		l /= base;
+	} while (l != 0);
+
+	if (init_sign)
+		*--pointer = init_sign;
+	return (pointer);
 }
 
 /**
  * _strdup - duplicates a strings
- * @string: The string to be duplicated
+ * @temp_str: The string to be duplicated
  * Return: the pointer of the concat string
- */
-char *_strdup(char *string)
+ **/
+char *_strdup(char *temp_str)
 {
-	int j, k;
-	char *s;
+	int n, m;
+	char *temp = NULL;
 
-	if (string == NULL)
+	if (temp_str == NULL)
+		return (0);
+	for (n = 0; temp_str[n]; n++)
+		;
+	n++;
+	temp = malloc(n * sizeof(char *));
+	if (!temp)
 		return (NULL);
-
-	j = _strlen(string);
-	s = malloc((j + 1) * sizeof(char));
-	if (s == NULL)
-		return (NULL);
-
-	for (k = 0; k < j; k++)
-		s[k] = string[k];
-
-	return (s);
-}
-
-/**
- * _itoa - integer to ascii value
- * @integer: the integer
- * Return: char
- * Reference: https://gist.github.com/narnat/95733cd0ad7bfac0d90697292914c407
- */
-
-char *_itoa(int integer)
-{
-	int counter = 0;
-	int placeh = integer;
-	char *ptr;
-
-	if (integer == 0)
+	for (m = 0; m < n; m++)
 	{
-		ptr = malloc(2 * sizeof(char));
-		if (ptr == NULL)
-			return (NULL);
-
-		ptr[0] = '0';
-		ptr[1] = '\0';
-
-		return (ptr);
+		temp[m] = temp_str[m];
 	}
-
-	while (placeh != 0)
-	{
-		counter++;
-		placeh /= 10;
-	}
-
-	ptr = malloc((counter + 1) * sizeof(char));
-	if (ptr == NULL)
-		return (NULL);
-
-	ptr[counter] = '\0';
-
-	while (integer != 0)
-	{
-		counter--;
-		ptr[counter] = (integer % 10) + '0';
-		integer /= 10;
-	}
-
-	return (ptr);
+	return (temp);
 }
