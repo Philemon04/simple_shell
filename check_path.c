@@ -44,15 +44,12 @@ char *_strdup(char *string)
 	for (k = 0; k < j; k++)
 		s[k] = string[k];
 
-	s[j] = '\0';
-
 	return (s);
 }
 
 /**
  * _itoa - integer to ascii value
  * @integer: the integer
- * @base: the base
  * Return: char
  * Reference: https://gist.github.com/narnat/95733cd0ad7bfac0d90697292914c407
  */
