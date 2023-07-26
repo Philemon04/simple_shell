@@ -1,4 +1,4 @@
-fndef _HEADER_H_
+#ifndef _HEADER_H_
 #define _HEADER_H_
 #include <sys/wait.h>
 #include <sys/stat.h>
