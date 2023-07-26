@@ -4,7 +4,7 @@
  * print_shell - prints the current environment
  * @env: environmnet variable
  **/
-void print_shell((char **environ)
+void print_shell(char **environ)
 {
 	int j = 0;
 

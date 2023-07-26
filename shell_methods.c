@@ -109,7 +109,7 @@ char **get_array_from_str(char *str, char **env)
 
 char **_which(char *foundpath)
 {
-	int size = TOK_BUFSIZE, i = 0;
+	int size = TOK_BUFFERSIZE, i = 0;
 	char *copy_path = NULL, *tokens = NULL, *sparse = ":=";
 	char **dir = _calloc(sizeof(char *), size);
 
@@ -149,7 +149,7 @@ char **_which(char *foundpath)
 int executable_command(char **av, char **args, char **env, int status_main, int count)
 {
 	pid_t pid;
-	int status_main;
+	int status;
 
 	if (args == NULL)
 		return (-1);
@@ -176,7 +176,7 @@ int executable_command(char **av, char **args, char **env, int status_main, int 
 			free(args[0]);
 
 		free(args);
-		waitpid(pid, &status_main, WUNTRACED);
+		waitpid(pid, &status, WUNTRACED);
 	}
 	return (1);
 }
