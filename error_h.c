@@ -53,3 +53,38 @@ int _stat(char **cmd, char **path)
 	return (0);
 }
 
+/**
+* print_shell - prints the current environment
+* @env: environmnet variable
+**/
+void print_shell(char **environ)
+{
+	int j = 0;
+
+	for (; environ[j] ; j++)
+	_puts(environ[j]);
+}
+
+/**
+* _calloc - allocates memory for numb elements of size bytes
+* @numb: number of elements in the array
+* @size: bytes for the positions in the array
+* Return: void
+**/
+void *_calloc(unsigned int numb, unsigned int size)
+{
+	char *pointer;
+	unsigned int i;
+
+	if (numb == 0 || size == 0)
+		return (NULL);
+
+	pointer = malloc(numb * size);
+	if (pointer == NULL)
+		return (NULL);
+
+	for (i = 0; i < numb * size; i++)
+		pointer[i] = 0;
+
+	return (pointer);
+}

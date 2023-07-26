@@ -1,18 +1,6 @@
 #include "header.h"
 
 /**
- * print_shell - prints the current environment
- * @env: environmnet variable
- **/
-void print_shell(char **environ)
-{
-	int j = 0;
-
-	for (; environ[j] ; i++)
-		_puts(environ[j]);
-}
-
-/**
 * main - is the main shell main method
 * @ac: no of arguments
 * @av: array of arguments
@@ -31,7 +19,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		prompt();
 		/*read input and return string*/
 		position = read_command();																		/*separates string to get command and atgs*/
-		args = sparse_str(position, env);
+		args = get_array_from_str(position, env);
 
 		if ((_strcmp(args[0], "\n") != 0) && (_strcmp(args[0], "env") != 0))
 		{
@@ -47,29 +35,4 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		free(position);
 	}
 	return (EXIT_SUCCESS);
-}
-
-/**
- * _calloc - allocates memory for numb elements of size bytes
- * @numb: number of elements in the array
- * @size: bytes for the positions in the array
- * Return: void
- **/
-void *_calloc(unsigned int numb, unsigned int size)
-{
-	char *pointer;
-	unsigned int i;
-
-	if (numb == 0 || size == 0)
-		return (NULL);
-
-	pointer = malloc(numb * size);
-	if (pointer == NULL)
-		return (NULL);
-
-	for (i = 0; i < numb * size; i++)
-		pointer[i] = 0;
-
-	return (pointer);
-
 }
