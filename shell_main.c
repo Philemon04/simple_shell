@@ -13,10 +13,10 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	char **args, **path;
 	int counter = 0, state = 0;
 	(void) av;
-	input(SIGINT, get_input);
+	signal(SIGINT, get_input);
 	while (1)
 	{
-		prompt();
+		start_prompt();
 		/*read input and return string*/
 		position = read_command();																		/*separates string to get command and atgs*/
 		args = get_array_from_str(position, env);
