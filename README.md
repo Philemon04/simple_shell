@@ -1,6 +1,6 @@
 Hello
 
-This is a simple unix command line interface that is built using C and compiled with GCC.
+The follwing is a project wriiten in C and it involves a simple unix command line interface.
 
 It utilizes various functions to handle the various necesseties of a command line.
 A later update to thsi file will list what each function does.
