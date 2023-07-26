@@ -48,8 +48,8 @@ int _strlen(const char *s)
 
 /**
 * str_concat - back a pointer to array
-* @string1: first array
-* @string2: second array
+* @str1: first array
+* @str2: second array
 * Return: returns an array
 */
 char *str_concat(char *str1, char *str2)
@@ -99,7 +99,7 @@ int _strcmp(char *string1, char *string2)
 {
 	char *pointer1 = string1;
 	char *pointer2 = string2;
-	
+
 	while (*pointer1 != '\0' && *pointer2 != '\0' && *pointer1 == *pointer2)
 	{
 		pointer1++;

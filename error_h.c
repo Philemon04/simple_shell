@@ -40,7 +40,8 @@ int _stat(char **cmd, char **path)
 		final_string = str_concat(first_string, cmd[0]);
 		if (stat(final_string, &sb) == 0 && (sb.st_mode & S_IXUSR))
 		{
-			cmd[0] = final_string;																			free(first_string);
+			cmd[0] = final_string;
+			free(first_string);
 			free(path[0]);
 			free(path);
 			return (1);
@@ -55,7 +56,7 @@ int _stat(char **cmd, char **path)
 
 /**
 * print_shell - prints the current environment
-* @env: environmnet variable
+* @environ: environmnet variable
 **/
 void print_shell(char **environ)
 {

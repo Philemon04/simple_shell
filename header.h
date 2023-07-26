@@ -15,7 +15,7 @@ extern char **environ;
 void get_input(int input);
 int exit_shell(char **args);
 void print_shell(char **env);
-int executable_command(char **argv, char **args, char **environ, int string, int counts);
+int exe_command(char **argv, char **args, char **environ, int str, int cnt);
 int _strlen(const char *len);
 int _strcmp(char *string1, char *string2);
 char *_strstr(char *string1, char *substring);

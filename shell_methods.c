@@ -21,7 +21,7 @@ void start_prompt(void)
 * Return: void
 */
 char *read_command(void)
-{	        
+{
 	char *entry = NULL;
 	ssize_t signal;
 	size_t buffersize = 0;
@@ -61,6 +61,7 @@ char *read_command(void)
 /**
 * get_array_from_str - forms an array of string from a string
 * @str: string to be passed
+* @env: environment variable
 * Return: returns array of strings or exits
 */
 
@@ -88,7 +89,7 @@ char **get_array_from_str(char *str, char **env)
 		token = strtok(NULL, TOK_DELIM);
 	}
 	if (tokens[0] == NULL)
-		tokens[pos] = "\n"; 
+		tokens[pos] = "\n";
 	if ((_strcmp(tokens[0], "exit") == 0) && tokens[1] == NULL)
 	{
 		free(str);
@@ -124,7 +125,7 @@ char **_which(char *foundpath)
 		perror("Error allocated memory");
 		return (NULL);
 	}
-	
+
 	copy_path = _strdup(foundpath);
 	tokens = strtok(copy_path, sparse);
 	while (tokens != NULL)
@@ -138,7 +139,7 @@ char **_which(char *foundpath)
 }
 
 /**
-* executable_command -  checks if the input is an executable command
+* exe_command - checks if the input is an executable command
 * @args: the input to be checked
 * @env: environment variable
 * @status_main: status variable
@@ -146,7 +147,7 @@ char **_which(char *foundpath)
 * @count: count of the entry
 * Return: 1
 */
-int executable_command(char **av, char **args, char **env, int status_main, int count)
+int exe_command(char **av, char **args, char **env, int status_main, int count)
 {
 	pid_t pid;
 	int status;

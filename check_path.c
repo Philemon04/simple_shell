@@ -10,7 +10,7 @@ char **search_path(char **environ)
 {
 	int place = 0;
 	char **path_of_token;
-	
+
 	for (; environ[place] != NULL ; place++)
 	{
 		if (environ[place][0] == 'P' && environ[place][2] == 'T')
@@ -44,8 +44,8 @@ char *_itoa(int temp_num, int base)
 	}
 	pointer = &buff[49];
 	*pointer = '\0';
-	
-	do      {
+
+	do	{
 		*--pointer = holder[l % base];
 		l /= base;
 	} while (l != 0);

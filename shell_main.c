@@ -18,15 +18,15 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	{
 		start_prompt();
 		/*read input and return string*/
-		position = read_command();																		/*separates string to get command and atgs*/
+		position = read_command();/*separates string to get command and args*/
 		args = get_array_from_str(position, env);
 
 		if ((_strcmp(args[0], "\n") != 0) && (_strcmp(args[0], "env") != 0))
 		{
 			counter += 1;
-			path = search_path(env); /*busca PATH en la variable environ*/
+			path = search_path(env);
 			state = _stat(args, path);
-			executable_command(av, args, env, state, counter);
+			exe_command(av, args, env, state, counter);
 		}
 		else
 		{
